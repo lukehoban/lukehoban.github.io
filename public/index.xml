@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Luke Hoban</title>
+		<link>https://lukehoban.com/</link>
+		<description>Recent content on lukehoban.com</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>en-us</language>
+		<lastBuildDate>Tue, 25 Feb 2020 13:44:49 -0700</lastBuildDate>
+		<atom:link href="https://lukehoban.com/index.xml" rel="self" type="application/rss+xml" />
+		<item>
+			<title>A Fast Path to Modern Physics</title>
+			<link>https://lukehoban.com/posts/fast-physics/</link>
+			<pubDate>Tue, 25 Feb 2020 13:44:49 -0700</pubDate>
+			<guid>https://lukehoban.com/posts/fast-physics/</guid>
+			<description>
+			One of my favorite physics books is Einstein Gravity in a Nutshell by A. Zee. A subplot of the book that is spread over several sections, is …
+			</description>
+		</item>
+		<item>
+			<title>Untyped Lambda Calculus, Church Numerals, and the Y Combinator in Go</title>
+			<link>https://lukehoban.com/posts/untyped-lambda-calculus/</link>
+			<pubDate>Tue, 25 Feb 2020 13:44:49 -0700</pubDate>
+			<guid>https://lukehoban.com/posts/untyped-lambda-calculus/</guid>
+			<description>
+			While reviewing a Go API today — I noticed that this intriguing type is representable in the Go type system:
+type V func(v V) V If you are …
+			</description>
+		</item>
+	</channel>
+</rss>
