@@ -1,6 +1,6 @@
 ---
 title: "A Fast Path to Modern Physics"
-date: 2020-02-25T13:44:49-07:00
+date: 2023-08-18T13:44:49-07:00
 math: true
 markup: "mmark"
 ---

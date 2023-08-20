@@ -25,3 +25,13 @@ googleAnalytics = "G-CLX7VFMYC9"
 
 	# Add math typesetting with KaTeX (Global with this Param)
 	math = true
+
+[[params.social]]
+name = "Github"
+icon = "fab fa-github"
+url = "https://github.com/lukehoban"
+
+[[params.social]]
+name = "RSS"
+icon = "fas fa-rss"
+url = "/index.xml"
