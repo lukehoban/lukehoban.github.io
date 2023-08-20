@@ -5,11 +5,13 @@ math: true
 markup: "mmark"
 ---
 
-One of my favorite physics books is [Einstein Gravity in a Nutshell](https://press.princeton.edu/books/hardcover/9780691145587/einstein-gravity-in-a-nutshell) by A. Zee.  A subplot of the book that is spread over several sections, is a line of thinking that discovers a wide range of physics from a simple starting point, guided by a couple simple intuitions (1) could what we know be seen as a low velocity approximation of something more general? (2) if new symmetries show up in the new more general form take them seriously and see what happens.
+One of my favorite physics books is [Einstein Gravity in a Nutshell](https://press.princeton.edu/books/hardcover/9780691145587/einstein-gravity-in-a-nutshell) by Anthony Zee.  A subplot of the book that is spread over several sections, is a line of thinking that discovers a wide range of physics from a simple starting point, guided by a couple simple intuitions:
+1. Could what we know be seen as a low velocity approximation of something more general?
+2. if new symmetries show up in the new more general form take them seriously and see what happens!
 
-I've never seen this this approach used in other physics books or papers, but I think back to it frequently.  So in this post, I attempt to recreate it, filling in some details and extending to a few additional "discoveries" motivated by the same line of thinking.
+I've never seen this this approach used in other physics books or papers, and it doesn't line up with the historical order of discoveries, but it's pedagogically intriguing.  So in this post, I attempt to recreate it, filling in some details and extending to a few additional "discoveries" motivated by the same line of thinking.
 
-We'll imagine ourselves a physicist from the 1700s who knows Newtonian mechanics, and see a path where we could have reasonably discovered much of 19th and 20th centuty physics, mostly just by recognizing the structure of various equations as possible low-velocity approximations of other more structured forms, and then taking seriously the symmetries we discover in those new forms.  In the prologue, we'll just reformulate $F=ma$ in a way well known in the 1700s. Then we'll make some more educated guesses to discover the rest of this physics.
+We'll imagine ourselves a physicist from the 1700s who knows Newtonian mechanics, and see a path where we could have plausibly discovered much of 19th and 20th centuty physics, mostly just by recognizing the structure of various equations as possible low-velocity approximations of other more structured forms, and then taking seriously the symmetries we discover in those new forms.  In the prologue, we'll just reformulate $F=ma$ in a way well known in the 1700s. Then we'll make some more educated guesses to discover the rest of this physics.
 
 Along the way - we'll "discover" all of the following:
 * The speed of light

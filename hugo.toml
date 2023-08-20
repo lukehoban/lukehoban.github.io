@@ -2,6 +2,7 @@ baseURL = 'https://lukehoban.com/'
 languageCode = 'en-us'
 title = 'Luke Hoban'
 theme = 'hugo-vitae'
+googleAnalytics = "G-R96GXBBX6"
 
 [params]
 	# Enable dark mode as default
