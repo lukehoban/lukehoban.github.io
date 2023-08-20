@@ -9,10 +9,16 @@ googleAnalytics = "G-CLX7VFMYC9"
 	#darkmode = true
 
 	# Use homepage.md instead of a list of posts
-	homepage = false
+	homepage = true
+
+	# Optional favicons for website
+	favicon = true
+
+	# Optional 80x80 avatar image.
+	avatar = "/img/lukehoban.jpeg"
 
 	# Add meta keywords in head part (Site Keywords or Tags of Page)
-	#keywords = ["hugo","vitae","theme","static"]
+	#keywords = ["luke","hoban","programming","cloud","typescript","physics"]
 
 	# Add meta description in head part
 	#description = "Vitae is a blog theme for Hugo that focuses on your content."
@@ -26,6 +32,10 @@ googleAnalytics = "G-CLX7VFMYC9"
 	# Add math typesetting with KaTeX (Global with this Param)
 	math = true
 
+	# Add list of sections that should show up on the homepage
+	mainSections = ["posts"]
+
+
 [[params.social]]
 name = "Github"
 icon = "fab fa-github"
@@ -35,3 +45,19 @@ url = "https://github.com/lukehoban"
 name = "RSS"
 icon = "fas fa-rss"
 url = "/index.xml"
+
+# Navigation
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
