@@ -1,4 +1,4 @@
-Welcome 👋.  I'm __Luke Hoban__, currently CTO at [Pulumi](github.com/pulumi/pulumi).  Previously, co-founder of the [TypeScript](https://github.com/Microsoft/TypeScript) project, representative to the ECMA TC39 standards body working on [ECMAScript/JavaScript](https://github.com/tc39/ecma262), product manager on EC2 at [AWS](https://github.com/aws), and many other developer tools and cloud platform roles.
+Welcome 👋.  I'm __Luke Hoban__, currently CTO at [Pulumi](https://github.com/pulumi/pulumi).  Previously, co-founder of the [TypeScript](https://github.com/Microsoft/TypeScript) project, representative to the ECMA TC39 standards body working on [ECMAScript/JavaScript](https://github.com/tc39/ecma262), product manager on EC2 at [AWS](https://github.com/aws), and many other developer tools and cloud platform roles.
 
 ## 📝 Blog 
 
