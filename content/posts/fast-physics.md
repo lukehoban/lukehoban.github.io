@@ -248,15 +248,15 @@ Let's apply $\delta S = 0$ to discover the equations of motion for this new acti
 
 $$ 0 = \delta S$$
 
-$$ 0 = \delta \left[ - mc \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\mu}} - \int A_\mu(x(t)) dx^\mu \right]$$
+$$ 0 = \delta \left[ - mc \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} - \int A_\mu(x(t)) dx^\mu \right]$$
 
-$$ 0 = - mc \int \delta \left[ \sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\mu}} \right] - \int \left[ \partial_\mu A_\nu(x(t)) \delta x^\mu dx^\nu + A_\mu(x(t)) d\delta x^\mu\right] $$
+$$ 0 = - mc \int \delta \left[ \sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} \right] - \int \left[ \partial_\mu A_\nu(x(t)) \delta x^\mu dx^\nu + A_\mu(x(t)) d\delta x^\mu\right] $$
 
-$$ 0 = - mc \int \delta \left[ \sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\mu}} \right] - \int \left[ \partial_\mu A_\nu(x(t)) \delta x^\mu dx^\nu - \partial_\nu A_\mu(x(t)) \delta x^\mu dx^\nu \right] $$
+$$ 0 = - mc \int \delta \left[ \sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} \right] - \int \left[ \partial_\mu A_\nu(x(t)) \delta x^\mu dx^\nu - \partial_\nu A_\mu(x(t)) \delta x^\mu dx^\nu \right] $$
 
-We'll introduce $F_{\mu\nu}(x(t)) =  \partial_\mu A_\nu(x(t)) - \partial_\nu A_\mu(x(t)) $ so that we have:
+We'll introduce $F_{\mu\nu}(x(t)) =  \partial_\mu A_\nu(x(t)) - \partial_\nu A_\mu(x(t)) $, so the second term above becomes $-\int F_{\mu\nu}\,\delta x^\mu dx^\nu$.
 
-The variation of the second (vector potential) term above is exactly what we computed in the two lines above. The variation of the first term, $-mc\int\delta\left[\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\mu}}\right]$, follows precisely the same steps as in the Prologue, just carried out in four dimensions instead of one. There, varying $\int dt\, \frac{m}{2}\left(\frac{dx}{dt}\right)^2$ produced $\int dt\, m\frac{d^2x}{dt^2}\delta x$ after integrating by parts. Here the natural parameter along the path is the invariant proper time $\tau$, defined by $d\tau^2 = \frac{1}{c^2}\eta_{\mu\nu}dx^{\mu}dx^{\nu}$ (the time measured by a clock traveling with the object), so the same steps instead produce $\int d\tau\, m\frac{d^2x^\mu}{d\tau^2}\delta x^\mu$. Putting both terms together, using $\tau$ as the common parameter for the integral:
+The first term varies exactly as it did back in the Prologue, just in four dimensions, and parametrized by the object's own proper time $\tau$ instead of $t$ (defined by $d\tau^2 = \frac{1}{c^2}\eta_{\mu\nu}dx^{\mu}dx^{\nu}$, the time kept by a clock traveling with the object). So it contributes $\int d\tau\, m\frac{d^2x^\mu}{d\tau^2}\delta x^\mu$. Writing the second term with the same $\tau$ parametrization and combining the two, we have:
 
 $$ 0 = \int  d\tau \left[ m \frac{d^2x^{\mu}}{d\tau^2} - F^\mu_\nu \frac{dx^\nu}{d\tau}\right] \delta x^\mu $$
 
@@ -581,7 +581,7 @@ Here, the object's kinetic term $-mc\int\sqrt{g_{\mu\nu}(x)dx^\mu dx^\nu}$ *alre
 
 $$ \delta S_m = \frac{1}{2}\int d^4x\, \sqrt{-g}\, T_{\mu\nu}\, \delta g^{\mu\nu} $$
 
-This $T_{\mu\nu}$ is the *energy-momentum tensor* - it plays exactly the same role for gravity that the current $J^\mu$ played for electromagnetism. Varying the combined action $S \sim \int R\sqrt{-g}\,d^4x + S_m$ and setting the total variation to zero now gives:
+This $T_{\mu\nu}$ is the *energy-momentum tensor* - it plays exactly the same role for gravity that the current $J^\mu$ played for electromagnetism. (We could carry out this variation explicitly for our point particle, the same way we derived $J^\mu$ explicitly in Part 2, and it would produce the stress-energy of a point mass moving along its path - but we'll skip those steps here and just take the general definition above.) Varying the combined action $S \sim \int R\sqrt{-g}\,d^4x + S_m$ and setting the total variation to zero now gives:
 
 $$ R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = \frac{8\pi G}{c^4}T_{\mu\nu} $$
 
