@@ -276,21 +276,23 @@ $$F_{\mu\nu} = \begin{pmatrix} 0 & E_1 / c & E_2 / c & E_3 / c \cr - E_1 / c & 0
 
 This introduces two vectors $\vec{E} = (E_1,E_2,E_3)$ and  $\vec{B} = (B_1,B_2,B_3)$ that together define $F_{\mu\nu}$ (and vice versa).
 
-We can expand out our equations of motion in terms of $\vec{E}$ and $\vec{B}$ instead to see what they say in a more familiar notation.
+Before expanding our equation of motion in terms of $\vec{E}$ and $\vec{B}$, we should be careful about $d\tau$ versus $dt$: $\tau$ is the proper time of the object itself, while $t$ is the time coordinate of whatever frame we're working in, and the two are related by the usual time-dilation factor $\gamma = \frac{dt}{d\tau} = \frac{1}{\sqrt{1-|\vec v|^2/c^2}}$, so that $\frac{d}{d\tau} = \gamma\frac{d}{dt}$. Substituting this into $m\frac{d^2x^\mu}{d\tau^2} = F^\mu_\nu\frac{dx^\nu}{d\tau}$ and dividing both sides by $\gamma$ gives the equation of motion in terms of $t$ instead of $\tau$:
 
-For $\mu = 1$ we have:
+$$ \frac{d}{dt}\left(\gamma m \frac{dx^\mu}{dt}\right) = F^\mu_\nu \frac{dx^\nu}{dt} $$
 
-$$ m \frac{d^2x^1(t)}{dt^2} = F_{1 0} + F_{1 1} dx^1 + F_{1 2} dx^2 + F_{1 3} dx^3$$
+For $\mu = 1$, using the components of $F_{\mu\nu}$ above and $dx^0 = c\,dt$, this is:
 
-$$ m \frac{d^2x^1(t)}{dt^2} = E_1 + B_3 dx^2 - B_2 dx^3$$
-
-$$ m \frac{d^2x^1(t)}{dt^2} = E_1 + B_3 \frac{dx^2}{dt} - B_2 \frac{dx^3}{dt}$$
+$$ \frac{d}{dt}\left(\gamma m \frac{dx^1}{dt}\right) = E_1 + B_3 \frac{dx^2}{dt} - B_2 \frac{dx^3}{dt}$$
 
 Or, generalizing to $\mu = 1,2,3$ we have:
 
-$$ m \frac{d^2\vec{x}(t)}{dt^2} = \vec{E} + \frac{d\vec{x}}{dt}  \times \vec{B} $$
+$$ \frac{d}{dt}\left(\gamma m \frac{d\vec{x}(t)}{dt}\right) = \vec{E} + \frac{d\vec{x}}{dt}  \times \vec{B} $$
 
-**We have discovered the Lorentz Force Law.**
+**We have discovered the Lorentz Force Law**, in its exact, relativistic form. Notice that it is $\gamma m \vec{v}$, the relativistic momentum, that is being accelerated here, not just $m\vec{v}$ - an early hint that momentum itself needed to be reconsidered once we took special relativity seriously, not just the $F=ma$ we started from.
+
+This is also a good place to reapply our founding assumption. At low velocity, $\gamma \to 1$ and its rate of change becomes negligible, and this equation collapses back to the more familiar form usually taught first:
+
+$$ m \frac{d^2\vec{x}(t)}{dt^2} = \vec{E} + \frac{d\vec{x}}{dt}  \times \vec{B} $$
 
 We can of course measure and observe the two 3 dimensional vector fields $\vec{E}$ and $\vec{B}$ as the electric and magnetic fields.  These are just the components of the much more symmetrical $F_{\mu\nu}$ which itself is formed from derivatives of the vector potential $A_\mu$.  If we know any of these, we know the rest.  The unique structure of the electromagnetic fields and their force on an object turns out to be effectively the only structure allowed for a Lorentz-covariant potential.  So we didn't have to "guess" this form, the simple assumption that we should take Lorentz invariance seriously while incorporating a potential into the equations required us to have the form of the Lorentz force law.
 
@@ -577,14 +579,30 @@ $$ R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = 0 $$
 
 Following exactly the pattern from Part 2, we now ask: what changes if there *is* mass or energy present? In electromagnetism, the object's own path contributed a term $-\int A_\mu(X) dX^\mu$ to the action, and varying that term with respect to $A_\mu$ produced the source current $J^\mu$ on the right-hand side of Maxwell's equations.
 
-Here, the object's kinetic term $-mc\int\sqrt{g_{\mu\nu}(x)dx^\mu dx^\nu}$ *already* depends on $g_{\mu\nu}$, since the metric itself is what the object moves through. So this term, too, contributes when we vary with respect to $g^{\mu\nu}$. More generally, for any matter action $S_m$ (of which our point particle is the simplest example), we define the source tensor $T_{\mu\nu}$ to be exactly the thing that appears when we vary $S_m$ with respect to $g^{\mu\nu}$:
+Here, the object's kinetic term $-mc\int\sqrt{g_{\mu\nu}(x)dx^\mu dx^\nu}$ *already* depends on $g_{\mu\nu}$, since the metric itself is what the object moves through. So this term, too, contributes when we vary with respect to $g^{\mu\nu}$. Writing $S_{particle} = -mc\int d\tau$ with $d\tau = \frac{1}{c}\sqrt{g_{\mu\nu}(X(\tau))\frac{dX^\mu}{d\tau}\frac{dX^\nu}{d\tau}}\,d\tau$, and using the same delta-function trick as in Part 2 to turn this into an integral over all of spacetime:
+
+$$ S_{particle} = -mc \int d\tau \int d^4x\, \delta^{(4)}(x-X(\tau))\, \sqrt{g_{\mu\nu}(x)\frac{dX^{\mu}}{d\tau}\frac{dX^{\nu}}{d\tau}} $$
+
+Varying this with respect to $g_{\mu\nu}(x)$, holding the path $X(\tau)$ fixed, exactly as we held $A_\mu$'s path fixed while varying the field before:
+
+$$ \delta S_{particle} = -\frac{m}{2}\int d^4x \int d\tau\, \delta^{(4)}(x-X(\tau))\, \frac{dX^{\mu}}{d\tau}\frac{dX^{\nu}}{d\tau}\, \delta g_{\mu\nu}(x) $$
+
+And using the standard identity $\delta g_{\mu\nu} = -g_{\mu\alpha}g_{\nu\beta}\,\delta g^{\alpha\beta}$ to convert this into a variation with respect to $g^{\mu\nu}$ instead:
+
+$$ \delta S_{particle} = \frac{1}{2}\int d^4x \left[m\int d\tau\, \delta^{(4)}(x-X(\tau))\, \frac{dX_{\mu}}{d\tau}\frac{dX_{\nu}}{d\tau}\right] \delta g^{\mu\nu}(x) $$
+
+Comparing to the general definition of $T_{\mu\nu}$ below, we can read off the point-particle source term directly, in exactly the same way we read off $J^\mu(x) = \int \delta^{(4)}(x - X) dX^\mu$ back in Part 2:
+
+$$ T_{\mu\nu}(x) = \frac{m}{\sqrt{-g}}\int d\tau\, \delta^{(4)}(x-X(\tau))\, \frac{dX_{\mu}}{d\tau}\frac{dX_{\nu}}{d\tau} $$
+
+More generally, for any matter action $S_m$ (of which our point particle is just the simplest example), we define the source tensor $T_{\mu\nu}$ to be exactly the thing that appears when we vary $S_m$ with respect to $g^{\mu\nu}$:
 
 $$ \delta S_m = \frac{1}{2}\int d^4x\, \sqrt{-g}\, T_{\mu\nu}\, \delta g^{\mu\nu} $$
 
-This $T_{\mu\nu}$ is the *energy-momentum tensor* - it plays exactly the same role for gravity that the current $J^\mu$ played for electromagnetism. (We could carry out this variation explicitly for our point particle, the same way we derived $J^\mu$ explicitly in Part 2, and it would produce the stress-energy of a point mass moving along its path - but we'll skip those steps here and just take the general definition above.) Varying the combined action $S \sim \int R\sqrt{-g}\,d^4x + S_m$ and setting the total variation to zero now gives:
+This $T_{\mu\nu}$ is the *energy-momentum tensor* - it plays exactly the same role for gravity that the current $J^\mu$ played for electromagnetism, and like $J^\mu$, it is built from the mass (there, the charge) moving tangent to the object's path. Varying the combined action $S \sim \int R\sqrt{-g}\,d^4x + S_m$ and setting the total variation to zero now gives:
 
 $$ R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = \frac{8\pi G}{c^4}T_{\mu\nu} $$
 
-Where the constant $\frac{8\pi G}{c^4}$ (with $G$ Newton's gravitational constant) fixes the relative normalization between the two terms of the action, in exactly the same way the $\frac{1}{4}$ in front of $F_{\mu\nu}F^{\mu\nu}$ fixed the normalization for Maxwell's equations - by requiring that the low-velocity, weak-field limit reproduces Newton's law of gravity.
+Where the constant $\frac{8\pi G}{c^4}$ (with $G$ Newton's gravitational constant - the same constant that appears in the Newtonian potential $V(x) = -\frac{GMm}{|x|}$ of a mass $M$, which is where we started all the way back in the Prologue) fixes the relative normalization between the two terms of the action, in exactly the same way the $\frac{1}{4}$ in front of $F_{\mu\nu}F^{\mu\nu}$ fixed the normalization for Maxwell's equations - by requiring that the low-velocity, weak-field limit of this equation reproduces Newton's law of gravity, $\nabla^2 V = 4\pi G\rho\, m$.
 
 **We've discovered the Einstein Field Equations.** Mass and energy (encoded in $T_{\mu\nu}$) tell spacetime how to curve (encoded in $R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R$), and curved spacetime tells objects how to move, via the geodesic equation we discovered earlier. Starting from nothing more than $F=ma$, taking two guesses seriously - that our action might be a low-velocity approximation, and that new symmetries revealed by generalizing it might be real - has led us the whole way to General Relativity.
