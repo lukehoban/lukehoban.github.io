@@ -222,23 +222,27 @@ $$ S =  - mc \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} - \int V dt $$
 
 There's no way to make $Vdt$ into a Lorentz covariant quantity if $V$ is a scalar quantity, since boosts would mix the $dt$ component with a $dx$ component.
 
-### (Electromagnetic) vector potential
+To keep the notation focused in this part, we'll use units where $c=1$.  We will restore $c$ when we connect the resulting field equations back to the speed of light.
+
+### Electromagnetic vector potential
 
 A solution is to treat the above action as only a low velocity approximation again.
 
-One way we can do that is to introduce a new vector $A_\mu=(\frac{V}{c}, A_1, A_2, A_3)$ so that:
+One way we can do that is to introduce a new four-vector $A^\mu=(V, A_1, A_2, A_3)$ so that:
 
 $$ \int \eta_{\mu\nu}A^\mu dx^\nu =  \int \left[Vdt - \vec{A}\vec{dx}\right] \approx \int V dt  $$
 
-Where the last approximate equality is because $\vec{dx} \ll c dt$ for normal speeds, so that the first term dominates.  For speeds closer to the speed of light, or vector potentials $A_\mu$ dominated by their spatial terms, we might see different physics, but for the low velocity approximation results will match the scalar potential we started with from Newton.
+The last approximate equality holds at low velocity when the spatial term is small.  At higher velocities, or for vector potentials dominated by their spatial components, we should expect different physics.
 
-This leads to a full action:
+We should also allow different objects to couple to this new potential with different strengths.  We call this independent property the electric charge $q$.  The scalar potential energy in the low velocity action is then $qV$, and a neutral object has $q=0$ even though it may have non-zero mass.
 
-$$ S =  - mc \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} - \int \eta_{\mu\nu}A^\mu dx^\nu $$
+This leads to the action:
+
+$$ S =  - m \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} - q \int \eta_{\mu\nu}A^\mu dx^\nu $$
 
 We'll introduce the lowering notation of moving Greek indices downstairs to indicate multiplication by a factor of $\eta_{\mu\nu}$, so that $A_\nu = \eta_{\mu\nu}A^\mu$.  This can be used in both terms above to simplify their notation:
 
-$$ S =  - mc \int\sqrt{dx_{\mu}dx^{\mu}} - \int A_\mu dx^\mu $$
+$$ S =  - m \int\sqrt{dx_{\mu}dx^{\mu}} - q \int A_\mu dx^\mu $$
 
 This is manifestly Lorentz invariant - all components are Lorentz vectors, and the inner product of vectors produces Lorentz scalar values that must transform covariantly under Lorentz transformations, so that the value of $S$ is the same in any Lorentz frame of reference.  It's notable that the additional symmetry of Lorentz invariance of the action puts significant constraints on the shape and structure of this equation.
 
@@ -246,49 +250,43 @@ This is manifestly Lorentz invariant - all components are Lorentz vectors, and t
 
 Let's apply $\delta S = 0$ to discover the equations of motion for this new action incorporating the vector potential.
 
-$$ 0 = \delta S$$
+First, let's fill in how proper time enters the variation of the free-particle term.  Along the path, $ds^2 = dx_\mu dx^\mu = d\tau^2$ in our $c=1$ units.  Varying the square root, integrating by parts, and fixing the endpoints gives:
 
-$$ 0 = \delta \left[ - mc \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} - \int A_\mu(x(t)) dx^\mu \right]$$
+$$ \delta \left(-m\int ds\right)
+ = -m\int \frac{dx_\mu}{ds}d\delta x^\mu
+ = m\int d\tau \frac{d^2x_\mu}{d\tau^2}\delta x^\mu $$
 
-$$ 0 = - mc \int \delta \left[ \sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} \right] - \int \left[ \partial_\mu A_\nu(x(t)) \delta x^\mu dx^\nu + A_\mu(x(t)) d\delta x^\mu\right] $$
+For the interaction term, the same integration by parts gives:
 
-$$ 0 = - mc \int \delta \left[ \sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} \right] - \int \left[ \partial_\mu A_\nu(x(t)) \delta x^\mu dx^\nu - \partial_\nu A_\mu(x(t)) \delta x^\mu dx^\nu \right] $$
+$$ \delta \left(-q\int A_\mu dx^\mu\right)
+ = -q\int \left(\partial_\nu A_\mu - \partial_\mu A_\nu\right)dx^\mu\delta x^\nu $$
 
-We'll introduce $F_{\mu\nu}(x(t)) =  \partial_\mu A_\nu(x(t)) - \partial_\nu A_\mu(x(t)) $ so that we have:
+We'll introduce:
 
-$$ 0 = \int  d\tau \left[ m \frac{d^2x^{\mu}}{d\tau^2} - F^\mu_\nu \frac{dx^\nu}{d\tau}\right] \delta x^\mu $$
+$$ F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu $$
 
-**TODO**: how does $d\tau$ end up here, steps for first part.
+Combining the two variations gives:
+
+$$ 0 = \int d\tau \left[m\frac{d^2x^\mu}{d\tau^2}
+ - qF^\mu{}_\nu\frac{dx^\nu}{d\tau}\right]\delta x_\mu $$
 
 Or, since $ \delta x^\mu $ is arbitrary:
 
-$$ 0 =  m \frac{d^2x^{\mu}}{d\tau^2} - F^\mu_\nu \frac{dx^\nu}{d\tau} $$
+$$  m \frac{d^2x^{\mu}}{d\tau^2} = qF^\mu{}_\nu \frac{dx^\nu}{d\tau} $$
 
-$$  m \frac{d^2x^{\mu}}{d\tau^2} = F^\mu_\nu \frac{dx^\nu}{d\tau} $$
-
-This looks a lot like $ma = F$ that we started with!  But the structure of the action requires the force to be proportional to the velocity $\frac{dx^\nu}{d\tau}$, and proportional to the tensor $F_{\mu\nu}$ derived from the derivative of the vector potential $A_\mu$.
+This looks a lot like $ma = F$ that we started with!  But the structure of the action requires the force to be proportional to the charge $q$, the four-velocity $\frac{dx^\nu}{d\tau}$, and the tensor $F_{\mu\nu}$ derived from the vector potential $A_\mu$.
 
 ### Lorentz Force Law
 
 We know that $F_{\mu\nu}$  must be antisymmetric ($F_{\mu\nu} = - F_{\nu\mu}$) from its definition.   That means there are only six unique values, and we can name them as follows:
 
-$$F_{\mu\nu} = \begin{pmatrix} 0 & E_1 / c & E_2 / c & E_3 / c \cr - E_1 / c & 0 & -B_3 & B_2 \cr - E_2 / c & B_3 & 0 & - B_1 \cr - E_3 / c & -B_2& B_1& 0 \end{pmatrix} $$
+$$F_{\mu\nu} = \begin{pmatrix} 0 & E_1 & E_2 & E_3 \cr - E_1 & 0 & -B_3 & B_2 \cr - E_2 & B_3 & 0 & - B_1 \cr - E_3 & -B_2& B_1& 0 \end{pmatrix} $$
 
 This introduces two vectors $\vec{E} = (E_1,E_2,E_3)$ and  $\vec{B} = (B_1,B_2,B_3)$ that together define $F_{\mu\nu}$ (and vice versa).
 
-We can expand out our equations of motion in terms of $\vec{E}$ and $\vec{B}$ instead to see what they say in a more familiar notation.
+At low velocity, proper time and coordinate time are approximately equal.  Expanding the three spatial components of the equation of motion then gives:
 
-For $\mu = 1$ we have:
-
-$$ m \frac{d^2x^1(t)}{dt^2} = F_{1 0} + F_{1 1} dx^1 + F_{1 2} dx^2 + F_{1 3} dx^3$$
-
-$$ m \frac{d^2x^1(t)}{dt^2} = E_1 + B_3 dx^2 - B_2 dx^3$$
-
-$$ m \frac{d^2x^1(t)}{dt^2} = E_1 + B_3 \frac{dx^2}{dt} - B_2 \frac{dx^3}{dt}$$
-
-Or, generalizing to $\mu = 1,2,3$ we have:
-
-$$ m \frac{d^2\vec{x}(t)}{dt^2} = \vec{E} + \frac{d\vec{x}}{dt}  \times \vec{B} $$
+$$ m \frac{d^2\vec{x}(t)}{dt^2} = q\left(\vec{E} + \frac{d\vec{x}}{dt}  \times \vec{B}\right) $$
 
 **We have discovered the Lorentz Force Law.**
 
@@ -298,11 +296,13 @@ We can of course measure and observe the two three-dimensional vector fields $\v
 
 We have introduced a vector potential $A_\mu$, but we have so far not said anything about the form it must take, or the dynamics of the $A_\mu$ field itself (how it evolves from a given state).  We have only spoken to the impact it has on other objects.
 
-We can observe an interesting fact about $A_\mu$.  If we change our $A_\mu$ to $A^\prime_\mu = A_\mu + \partial_\mu\Lambda$ then the term $\int A_\mu dx^\mu$ changes by the following:
+We can observe an interesting fact about $A_\mu$.  If we change our $A_\mu$ to $A^\prime_\mu = A_\mu + \partial_\mu\Lambda$ then the interaction term changes only by:
 
-$$ \int \partial_\mu\Lambda(x) dx^\mu  = \int d\Lambda(x) $$
+$$ q\int \partial_\mu\Lambda(x) dx^\mu
+ = q\int d\Lambda(x)
+ = q\left[\Lambda(x_f)-\Lambda(x_i)\right] $$
 
-If we take $\Lambda(x)$ to go to $0$ at infinity, then this value goes to $0$ and doesn't affect the equations of motion.
+This depends only on the fixed endpoints, so it doesn't affect the equations of motion.
 
 So even though we were able to specify the vector potential $A_\mu$ arbitrarily, it is actually overspecified; any change by $\partial_\mu \Lambda(x)$ for any $\Lambda(x)$ will represent the same physics.
 
@@ -322,7 +322,7 @@ To discover the equations of motion for the vector potential field, we must add 
 
 To capture the dynamics of the potential, it must involve two powers of the time derivatives of $A_\mu(x)$ just like the term $\frac{m}{2} \left(\frac{dx}{dt}\right)^2$ in the point particle equations of motion contains two powers of the time derivative of $x$.
 
-We also now expect this term to be gauge invariant.  There is in fact only one gauge invariant quantity we can build from derivatives of $A_\mu(x)$, which we stumbled upon earlier:
+We also now expect this term to be gauge invariant.  Up to a total derivative, there is only one Lorentz scalar with two powers of first derivatives of $A_\mu(x)$, built from the quantity we stumbled upon earlier:
 
 $$ F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$$
 
@@ -334,13 +334,15 @@ $$ \int d^4x \left(-\frac{1}{4}F_{\mu\nu}(x)F^{\mu\nu}(x)\right) $$
 
 This is the action that specifies all the dynamics of the field $A_\mu(x)$.
 
-The full action for an interacting object and the vector potential field is:
+The full action for an interacting charged object and the vector potential field is:
 
-$$ S = - mc \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} - \int A(x)_\mu dx^\mu - \int d^4x \frac{1}{4}F_{\mu\nu}(x)F^{\mu\nu}(x) $$
+$$ S = - m \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}}
+ - q\int A_\mu(X)dX^\mu
+ - \int d^4x \frac{1}{4}F_{\mu\nu}(x)F^{\mu\nu}(x) $$
 
-The first and second terms involve the object traversing the path $x_\mu(t)$ and the second and third terms involve the vector field $A_\mu(x)$ defined at all points in spacetime.  We have seen how the object behaves within this field.  How does the field behave in response to the object?
+The first and second terms involve the object traversing the path $X^\mu(\tau)$, and the second and third terms involve the vector field $A_\mu(x)$ defined at all points in spacetime.  We have seen how the object behaves within this field.  How does the field behave in response to the object?
 
-### The equations of motion of the vector field
+### The Equations of Motion of the Vector Field
 
 As we've done twice before, we vary the action, but this time we vary it with respect to $A_\mu(x)$ instead of $x_\mu(t)$.
 
@@ -360,79 +362,92 @@ $$ = \int d^4x \left[\partial_\mu F^{\mu\nu}(x)\right]\delta A_\nu(x)$$
 
 And, since this applies for any $\delta A_\nu(x)$, the term inside the $[...]$ must be 0.
 
-So, if there were no interaction with any objects, the field's dynamics would be:
+The interaction term can be rewritten as an integral over all of spacetime:
 
-$$ \partial_\mu F^{\mu\nu} = 0 $$
+$$ -q\int A_\mu(X)dX^\mu
+ = -\int d^4x J^\mu(x)A_\mu(x) $$
 
-Let's vary the second term as well though - representing the interaction.  We'll write it more precisely in terms of the actual path $X$ of the object, so that we can keep $x$ as a value that ranges over all of spacetime.
+where:
 
-$$ \delta \int A(X)_\mu dX^\mu $$
-$$ = \delta \int \left[  \int d^4x \delta^{(4)}(x - X) A_\mu(x) \right]dX^\mu $$
-$$ = \delta \int d^4x \int \delta^{(4)}(x - X) A_\mu(x) dX^\mu $$
-$$ = \int d^4x \int \delta^{(4)}(x - X) dX^\mu \delta A(x)_\mu  $$
-$$ = \int d^4x J^{\mu}(x) \delta A_\mu(x) $$
+$$ J^\mu(x) = q\int d\tau\,
+\frac{dX^\mu}{d\tau}\delta^{(4)}(x-X(\tau)) $$
 
-For $J^{\mu}(x) = \int \delta^{(4)}(x - X) dX^\mu$ which is a vector field that is non-zero only on the path of the object, and tangent to the path at all points.
+This four-current is non-zero only on the object's path, points along that path, and has a magnitude set by the charge $q$.  Varying the interaction term therefore gives:
 
-**TODO**: Charge.
+$$ \delta S_{\text{interaction}}
+ = -\int d^4x J^\mu(x)\delta A_\mu(x) $$
 
-So, putting these two pieces together, when the field interacts with an object, we have:
+Putting the field and interaction variations together, and requiring $\delta S=0$ for every $\delta A_\nu$, gives:
 
-$$ \partial_\mu F^{\mu\nu}(x) = - J^\nu(x) $$
+$$ \partial_\mu F^{\mu\nu}(x) = J^\nu(x) $$
 
 ### Maxwell's Equations
 
-If we name $J_0 = \rho$ and the other terms $\vec{J}$, and use the previous breakdown of $F_{\mu\nu}$ as $\vec{E}$ and $\vec{B}$ then we have a few terms of this equation:
-
-$$ \partial_i F^{i 0} = -\partial_i E^i = - \vec{\nabla} \cdot \vec{E} = - J^0  = -\rho$$
-
-Or:
+If we name $J^\mu=(\rho,\vec{J})$, then the $\nu=0$ component is:
 
 $$ \vec{\nabla} \cdot \vec{E} = \rho $$
 
 **We've discovered one of Maxwell's equations - Gauss's Law.**
 
-And:
+The three spatial components give:
 
-$$ \partial_\mu F^{\mu 3} = \partial_0 F^{0 3} + \partial_1 F^{1 3} + \partial_2 F^{2 3} $$
-$$ = \partial_0 E^3 - \partial_1 B^2 + \partial_2 B^1$$
+$$ \vec{\nabla} \times \vec{B}
+ = \frac{\partial \vec{E}}{\partial t} + \vec{J} $$
 
-Which if we complete for the other vector indices, generalizes into:
+**We've discovered another of Maxwell's equations - Ampere's Law with Maxwell's displacement current.**
 
-$$ \frac{\partial \vec{E}}{\partial t} - \vec{\nabla} \times \vec{B} = -\vec{J}$$
+The other two Maxwell equations are even simpler.  They are identities that must be true because $F_{\mu\nu}$ is built from a single potential.  Since partial derivatives commute:
 
-Or:
+$$ \partial_\lambda F_{\mu\nu}
+ + \partial_\mu F_{\nu\lambda}
+ + \partial_\nu F_{\lambda\mu} = 0 $$
 
-$$ \vec{\nabla} \times \vec{B} = \frac{\partial \vec{E}}{\partial t} + \vec{J}$$
+Taking all three indices to be spatial gives:
 
-**We've discovered another of Maxwell's equations - Ampere's Law.**
+$$ \vec{\nabla}\cdot\vec{B}=0 $$
 
-The other two Maxwell equations are actually even simpler, they are just identities that must be true because $F_{\mu\nu}$ is not just an arbitrary antisymmetric tensor, but is $F_{\mu\nu}(x(t)) =  \partial_\mu A_\nu(x(t)) - \partial_\nu A_\mu(x(t)) $.
+Taking one time index and two spatial indices gives Faraday's Law:
 
-**We discovered Maxwell's equations.**
+$$ \vec{\nabla}\times\vec{E}
+ = -\frac{\partial\vec{B}}{\partial t} $$
+
+**We have discovered all four of Maxwell's equations.**
 
 This way of writing the equations of motion also implies current conservation, because $F_{\mu\nu}$ is antisymmetric and partial derivatives commute:
 
-$$ \partial_\mu F^{\mu\nu}(x) = - J^\nu(x) $$
-$$ \partial_\nu \partial_\mu F^{\mu\nu}(x) = - \partial_\nu J^\nu(x) $$
-$$ 0 = - \partial_\nu J^\nu(x) $$
+$$ \partial_\mu F^{\mu\nu}(x) = J^\nu(x) $$
+$$ \partial_\nu \partial_\mu F^{\mu\nu}(x) = \partial_\nu J^\nu(x) $$
+$$ 0 = \partial_\nu J^\nu(x) $$
 $$ \partial_\nu J^\nu(x) = 0$$
 
 We already knew that from the way we defined $J^\nu(x)$, but this reaffirms how much information is in these equations of motion.
+
+### Electromagnetic Waves
+
+We can finally return to the maximum velocity $c$ we introduced in Part 1.  In empty space, $J^\mu=0$.  We can use our gauge freedom to choose the Lorenz gauge $\partial_\mu A^\mu=0$, after which the field equation becomes:
+
+$$ \partial_\mu\partial^\mu A^\nu = 0 $$
+
+Restoring $c$, this is:
+
+$$ \left(\frac{1}{c^2}\frac{\partial^2}{\partial t^2}
+ - \vec{\nabla}^2\right)A^\nu = 0 $$
+
+This is a wave equation whose solutions propagate at exactly $c$.  The electric and magnetic fields are waves traveling at the same invariant speed that appeared in the relativistic particle action.
+
+**We have discovered that light is an electromagnetic wave, and that its speed is the maximum speed $c$.**
 
 ### Summary of Part 2
 
 By taking Lorentz symmetry seriously, we promoted the potential $V(x)$ to a vector potential $A_\mu(x)$, and discovered that it must interact with objects according to the Lorentz force law.
 
-We then discovered a new symmetry, gauge invariance, in the action of the vector potential, and taking that seriously fixed the form of the action for the vector field $A_\mu(x)$ itself.  Solving the equations of motion for this field, we discovered that its dynamics are those of the Maxwell equations.
+We then discovered a new symmetry, gauge invariance, in the action of the vector potential, and taking that seriously fixed the form of the action for the vector field $A_\mu(x)$ itself.  Solving the equations of motion for this field produced Maxwell's equations, current conservation, and electromagnetic waves traveling at $c$.
 
-As a result, assuming these two symmetries are real leads to the discovery of all the properties of electromagnetism.
-
-**TODO**: Speed of light?
+As a result, taking these two symmetries seriously leads to the core structure of classical electromagnetism.
 
 ## Part 3: To Gravity
 
-We started Part 2 by looking at this action and trying to make the second term Lorentz invariant:
+We started Part 2 by looking at this action and trying to make the second term Lorentz invariant.  We now restore factors of $c$:
 
 $$ S =  - mc \int\sqrt{\eta_{\mu\nu}dx^{\mu}dx^{\nu}} - \int V dt $$
 
@@ -444,106 +459,113 @@ $$ S =  - mc \int\sqrt{g_{\mu\nu}(x)dx^{\mu}dx^{\nu}} $$
 
 Where:
 
-$$ g_{\mu\nu}(x) = \begin{pmatrix} 1 + \frac{2V(x)}{m}& 0 & 0 & 0 \cr 0 & -1 & 0 & 0 \cr 0 & 0 & -1 & 0 \cr 0 & 0 & 0 & -1 \end{pmatrix} $$
+$$ g_{\mu\nu}(x) = \begin{pmatrix} 1 + \frac{2V(x)}{mc^2}& 0 & 0 & 0 \cr 0 & -1 & 0 & 0 \cr 0 & 0 & -1 & 0 \cr 0 & 0 & 0 & -1 \end{pmatrix} $$
 
-We could expand this out, and use the low velocity approximation twice, to see that it ends up introducing the $Vdt$ term we started with.
+The combination $V/(mc^2)$ is dimensionless, as every component of the metric must be.  Expanding at low velocity and for a weak potential:
+
+$$ -mc\sqrt{g_{\mu\nu}dx^\mu dx^\nu}
+ = -mc^2dt\sqrt{1-\frac{v^2}{c^2}+\frac{2V}{mc^2}} $$
+
+$$ \approx -mc^2dt + \left(\frac{1}{2}mv^2-V\right)dt $$
+
+Apart from the constant rest-energy term, this is exactly the Newtonian action we started with.
 
 What if we again take this idea very seriously?  What if this $g_{\mu\nu}$ is actually the true metric of spacetime, and $\eta_{\mu\nu}$ is just the low-order limit when this new potential is small?  What if the length of a vector is actually measured by $g_{\mu\nu}$?  Then everywhere we contract Lorentz indices, we must do so with $g_{\mu\nu}$.
 
-This also means that spacetime is fundamentally curved.  Similar to how the surface of a sphere is a fundamentally curved two-dimensional surface, spacetime itself is a fundamentally curved four-dimensional surface (unless $V = 0$).
+The combination $\Phi=V/m$ is the gravitational potential per unit mass, so $g_{00}=1+2\Phi/c^2$ does not depend on which test object we use.  This universality is special to gravity: every freely falling object follows the same spacetime geometry.
 
-###  Curved Spacetime
+### Curved Spacetime
 
 This introduces a few new concepts.  First, the potential is now the metric itself, and it is a tensor instead of a scalar or vector. Second, the metric which determines "distance" in spacetime is no longer a constant, and no longer the "flat" metric we discovered for special relativity above.  Instead, the metric depends on the potential, and is different at every point of space.  That means that spacetime is curved, and curved by the presence of this potential.
 
 **We have discovered curved spacetime!**
 
-Just like with the vector potential where we realized there could have been non-zero terms elsewhere in the vector, but that the time dimension would have been the only term that dominated at low velocity, similarly, here we see that $g_{\mu\nu}(x)$ could actually have non-constant values in every position, but again for the low velocity case, the time-time value will dominate, and the perceived scalar potential will be $V(x) = \frac{m}{2}(g_{0 0}(x) - 1)$.  The only constraint is that only the symmetric part of $g_{\mu\nu}$ will matter because of how it is incorporated into the action, so we constrain our attention to $g_{\mu\nu}(x) = g_{\nu\mu}(x)$, which means 10 independent functions of spacetime.
+Just like with the vector potential, there can be non-zero components elsewhere in the tensor even though only the time-time component dominates the low velocity limit.  In that limit, the scalar potential is:
 
-### Motion of an object in curved spacetime
+$$ V(x) = \frac{mc^2}{2}\left(g_{00}(x)-1\right) $$
 
-Whenever we have an action, we know that we can vary it to discover the equations of motion.  Let's try that with our new $S$.
+Only the symmetric part of $g_{\mu\nu}$ contributes to the action, so we focus on $g_{\mu\nu}(x)=g_{\nu\mu}(x)$.  A symmetric $4\times4$ metric has 10 independent components at every point in spacetime.
 
-$$ S =  - mc \int\sqrt{g_{\mu\nu}(x)dx^{\mu}dx^{\nu}} $$
+### Motion of an Object in Curved Spacetime
 
-Or, for an arbitrary parameter along the curve $x^\mu(\lambda)$:
+Whenever we have an action, we know that we can vary it to discover the equations of motion.  The square-root action above measures the length of the path.  If we parameterize the path by proper time $\tau$, it gives the same path as the simpler quadratic action:
 
-$$ S =  - mc \int d\lambda \sqrt{g_{\mu\nu}(x)\frac{dx^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}} $$
+$$ S_{\text{path}} = \frac{1}{2}\int d\tau\,
+g_{\alpha\beta}(x)\frac{dx^\alpha}{d\tau}\frac{dx^\beta}{d\tau} $$
 
-Varying it is different from when we had the metric $\eta_{\mu\nu}$ because now the metric depends on the path $x^\mu(t)$ that we are varying.
+Defining $\dot{x}^\mu=\frac{dx^\mu}{d\tau}$, the two derivatives in the Euler-Lagrange equation are:
 
-Varying it, and defining $L = \sqrt{g_{\mu\nu}(x)\frac{dx^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}}$, we have:
+$$ \frac{\partial L}{\partial\dot{x}^\delta}
+ = g_{\delta\beta}\dot{x}^\beta $$
 
-$$ 0 =  \delta S $$
-$$ = \int \frac{1}{L} \left[ -\frac{\partial g_{\alpha\beta}}{\partial^\delta}\delta x^\delta \frac{dx^{\alpha}}{d\lambda}\frac{dx^{\beta}}{d\lambda} -2g_{\alpha\beta} \frac{d\delta x^{\alpha}}{d\lambda}\frac{dx^{\beta}}{d\lambda} \right] d\lambda  $$
+$$ \frac{\partial L}{\partial x^\delta}
+ = \frac{1}{2}\partial_\delta g_{\alpha\beta}
+\dot{x}^\alpha\dot{x}^\beta $$
 
-Integrating the second term by parts gives:
+Taking the proper-time derivative of the first expression gives:
 
-$$ 0 = \int \frac{1}{L} \delta x^\delta \left[ -\frac{\partial g_{\alpha\beta}}{\partial^\delta} \frac{dx^{\alpha}}{d\lambda}\frac{dx^{\beta}}{d\lambda} + 2\frac{d}{d\lambda}g_{\delta\beta}\frac{dx^{\beta}}{d\lambda} \right] d\lambda  $$
+$$ \frac{d}{d\tau}\left(g_{\delta\beta}\dot{x}^\beta\right)
+ = \partial_\alpha g_{\delta\beta}\dot{x}^\alpha\dot{x}^\beta
+ + g_{\delta\beta}\ddot{x}^\beta $$
 
-Since this must vanish for any $\delta x^\mu$, the piece inside the square brackets must be $0$.  Using the proper time $\tau$ instead of $\lambda$ we have:
+The Euler-Lagrange equation, multiplied by the inverse metric and symmetrized in $\alpha$ and $\beta$, becomes:
 
-$$ \frac{1}{2}\frac{\partial g_{\alpha\beta}}{\partial^\delta} \frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau} = \frac{d}{d\tau}g_{\delta\beta}\frac{dx^{\beta}}{d\tau}  $$
+$$ \frac{d^2 x^\mu}{d\tau^2}
+ + \Gamma^\mu_{\alpha\beta}
+\frac{dx^\alpha}{d\tau}\frac{dx^\beta}{d\tau} = 0 $$
 
-$$ \frac{1}{2}\frac{\partial g_{\alpha\beta}}{\partial^\delta} \frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau} = \frac{\partial g_{\delta\beta}}{\partial x^\delta} \frac{dx^\delta}{d\tau}\frac{dx^\beta}{d\tau} + g_{\delta\mu}\frac{d^2 x^\mu}{d\tau^2} $$
+where:
 
-$$ \frac{d^2 x^\mu}{d\tau^2} =  g^{\delta\mu} \frac{1}{2}\frac{\partial g_{\alpha\beta}}{\partial x^\delta} \frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau} - g^{\delta\mu} \frac{\partial g_{\delta\beta}}{\partial x^\delta} \frac{dx^\delta}{d\tau}\frac{dx^\beta}{d\tau}  $$
+$$ \Gamma^\mu_{\alpha\beta}
+ = \frac{1}{2}g^{\mu\delta}
+\left(\partial_\alpha g_{\delta\beta}
++\partial_\beta g_{\delta\alpha}
+-\partial_\delta g_{\alpha\beta}\right) $$
 
-$$ \frac{d^2 x^\mu}{d\tau^2} = \frac{1}{2}g^{\mu\delta} \left(\frac{\partial g_{\alpha\beta}}{\partial x^\delta}  -2 \frac{\partial g_{\delta\beta}}{\partial x^\alpha}    \right) \frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau} $$
-
-$$ \frac{d^2 x^\mu}{d\tau^2} = \frac{1}{2}g^{\mu\delta} \left(\frac{\partial g_{\alpha\beta}}{\partial x^\delta}  - \frac{\partial g_{\delta\beta}}{\partial x^\alpha} - \frac{\partial g_{\beta\delta}}{\partial x^\alpha}    \right) \frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau} $$
-
-$$ \frac{d^2 x^\mu}{d\tau^2} = \frac{1}{2}g^{\mu\delta} \left(\frac{\partial g_{\alpha\beta}}{\partial x^\delta}  - \frac{\partial g_{\delta\alpha}}{\partial x^\beta} - \frac{\partial g_{\beta\delta}}{\partial x^\alpha}    \right) \frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau} $$
-
-$$ \frac{d^2 x^\mu}{d\tau^2} = -\Gamma^\mu_{\alpha\beta} \frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau} $$
-
-For $ \Gamma^\mu_{\alpha\beta} = \frac{1}{2}g^{\mu\delta} \left(  \frac{\partial g_{\delta\alpha}}{\partial x^\beta} + \frac{\partial g_{\beta\delta}}{\partial x^\alpha} -\frac{\partial g_{\alpha\beta}}{\partial x^\delta}    \right)$, known as the Christoffel symbols.
-
-This is again reminiscent of $m\frac{d\vec{x}}{dt} = \vec{F}$ for the classical Newtonian scalar potential and $ m \frac{d^2x^{\mu}}{d\tau^2} = F^\mu_\nu \frac{dx^\nu}{d\tau} $ for the electromagnetic vector potential.  Here though, the acceleration is proportional to two factors of the velocity, and the potential is expressed as a tensor $ \Gamma^\mu_{\alpha\beta} $.
+These are known as the Christoffel symbols.  The equation is reminiscent of both Newton's equation and the electromagnetic equation of motion.  Here, though, the apparent acceleration is proportional to two factors of velocity, and the metric determines the coefficients.
 
 **We have discovered the Geodesic Equations.**
 
-When $g_{\mu\nu} = \eta_{\mu\nu}$, meaning there is no curvature, these equations say there is no acceleration: $\frac{d^2 x^\mu}{d\tau^2} = 0 $.  But this is also true for other $g_{\mu\nu}$ which also represent flat spacetime (just in less obvious coordinate systems). However, for $g_{\mu\nu}$ which produce non-zero $ \Gamma^\mu_{\alpha\beta} $, objects will feel acceleration due to the curvature of spacetime.  Note that this is not due to an external force or potential; the potential is actually now just part of the shape of spacetime which causes objects to accelerate as they "fall" within this curved spacetime.
+When $g_{\mu\nu}=\eta_{\mu\nu}$ in Cartesian coordinates, all Christoffel symbols vanish and $\frac{d^2x^\mu}{d\tau^2}=0$.  The Christoffel symbols can be non-zero even in flat spacetime if we use curved coordinates, so they are not themselves a coordinate-independent measure of curvature.  The geodesic equation nevertheless has the same form in every coordinate system: freely falling objects follow the straightest possible paths through spacetime.
 
 ### Curvature
 
-The Geodesic equation above was derived in the coordinate system using the proper time $\tau$ of the object moving in the curved spacetime.  But for another observer, we would get a different tensor here.  However, there is a value we can derive from $ \Gamma^\mu_{\alpha\beta}$ that truly is a unique description of the curvature of the spacetime.
-
-It's a little too involved to fully "discover" it here, but if we played around with curved spaces enough, we could discover that there is a unique tensor $R_{\mu\nu\delta\rho}$ we can build out of derivatives of the metric $g_{\mu\nu}$ that encodes all of the information about the curvature.
+Although we can make the Christoffel symbols vanish at a point by choosing a freely falling coordinate system, we cannot generally make their derivatives vanish as well.  The combination that survives such coordinate changes is the Riemann curvature tensor:
 
 $$ R^{\rho}_{\sigma\mu\nu} = \partial_\mu \Gamma^{\rho}_{\nu\sigma} - \partial_\nu \Gamma^{\rho}_{\mu\sigma} + \Gamma^{\rho}_{\mu\lambda}\Gamma^{\lambda}_{\nu\sigma} - \Gamma^{\rho}_{\nu\lambda}\Gamma^{\lambda}_{\mu\sigma} $$
 
-This expresses how much two geodesics (paths $x^\mu(t)$ in curved spacetime that follow the geodesic equations which are "as straight as possible" in the curved spacetime) will accelerate toward each other, as well as measuring the change in a vector as it is translated around an infinitesimal loop in spacetime (since in a curved space, vectors do not stay pointing the same direction when moved around a loop).
+This measures the change in a vector transported around an infinitesimal loop.  It also determines how nearby geodesics accelerate toward or away from each other - the tidal effect of gravity.
 
 **We've discovered the Riemann Curvature Tensor.**
 
-If we try to contract indices by multiplying by $g_{\alpha\beta}$ we find that there are quite a few symmetries of $R^{\rho}_{\sigma\mu\nu}$, so many of the contractions are $0$.  All the non-zero contractions are the same up to a minus sign:
+The symmetries of the Riemann tensor make many contractions vanish or repeat the same information.  The unique non-trivial contraction is the Ricci tensor:
 
-$$ R_{\mu\nu} = R^{\rho}_{\rho\mu\nu} $$
+$$ R_{\mu\nu} = R^{\rho}_{\mu\rho\nu} $$
 
-And similarly, we can contract again to form:
+Contracting once more gives the Ricci scalar:
 
-$$ R  = R^\mu_\mu $$
+$$ R = g^{\mu\nu}R_{\mu\nu} $$
 
-These are the Ricci tensor and scalar respectively.  These values are $0$ for flat space(time) and non-zero for curved spacetimes.
+The full Riemann tensor vanishes exactly when spacetime is locally flat.  The Ricci tensor and scalar contain less information: they vanish in empty regions of some curved spacetimes, but they are exactly the contractions we need to build the simplest action for the metric.
 
-### Dynamics of the metric tensor
+### Dynamics of the Metric Tensor
 
 Just like we did in Part 2, we can ask whether there are constraints on the structure and dynamics of $g_{\mu\nu}$ beyond it being a symmetric tensor.  Similar to how we couldn't answer that question directly for $A^\mu(x)$ due to its gauge invariance, we similarly can't answer directly in terms of $g_{\mu\nu}(x)$ due to its overspecification of the geometry (many different $g$ define the same structure of the geometry, just with different coordinates).  We need a quantity which is "generally covariant", which means that it doesn't change under changes to the coordinates (as long as the geometry/shape of the space is unchanged).
 
-Again, we are looking for a term satisfying
+Again, we are looking for a term satisfying:
 
 * It must contain two powers of the time derivative of $g_{\mu\nu}(x)$.
 * It must be generally covariant.
-* It must be a Lorentz scalar to be a term in the action.
+* It must be a scalar to be a term in the action.
 
-It turns out we already have a quantity that meets these requirements - the Ricci scalar $R$.  It contains two powers of the derivatives of $g_{\mu\nu}(x)$ because it contains two powers of the Christoffel symbol which is built out of derivatives of the metric.  It is generally covariant because it captures the curvature of the space independent of the coordinates used for the space.  And it is a Lorentz scalar quantity.
+It turns out we already have a quantity that meets these requirements - the Ricci scalar $R$.  It contains up to second derivatives of $g_{\mu\nu}(x)$, it describes curvature independently of the coordinates used, and it is a scalar.
 
-And this is almost the full answer, except that to integrate this over spacetime for the action, we can't just use $d^4 x$ because that isn't Lorentz invariant.  Instead, we must use $\sqrt{-g} d^4x$ as the integration measure where $g = det(g_{\mu\nu}(x))$ which is negative.  For flat spacetime,  $\sqrt{-g} = 1$ so this term is not needed, but for general $g_{\mu\nu}$ it is needed to ensure a Lorentz invariant integral.
+To integrate this over spacetime, we can't use $d^4x$ alone because a general coordinate transformation changes the coordinate volume.  Instead, we use $\sqrt{-g}\,d^4x$, where $g=\det(g_{\mu\nu})$.  The factor $\sqrt{-g}$ changes in exactly the opposite way, making the full measure coordinate invariant.
 
-The result is we can add a term to our action:
+Including the conventional normalization, the result is:
 
-$$ S \sim  \int R \sqrt{-g} d^4x $$
+$$ S_{\text{gravity}}
+ = \frac{c^3}{16\pi G}\int R\sqrt{-g}\,d^4x $$
 
 **We've discovered the Einstein-Hilbert Action.**
 
@@ -551,34 +573,35 @@ $$ S \sim  \int R \sqrt{-g} d^4x $$
 
 We know what to do when we find a new term in our action - we vary it!
 
-This one is even more messy than the variation of the vector potential action to get to Maxwell's equations.  But if we work through it in full, we get the following:
+This variation is more involved than the one that produced Maxwell's equations, but the key steps have the same structure.  First:
 
-TODO: Not done...
+$$ \delta\sqrt{-g}
+ = -\frac{1}{2}\sqrt{-g}\,g_{\mu\nu}\delta g^{\mu\nu} $$
 
+The variation of $R$ contributes a term $R_{\mu\nu}\delta g^{\mu\nu}$ plus a total derivative.  As before, the total derivative is a boundary term and doesn't affect the equations of motion.  The remaining variation is:
 
-<!--
-# OLD
+$$ \delta S_{\text{gravity}}
+ = \frac{c^3}{16\pi G}
+\int d^4x\sqrt{-g}
+\left(R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R\right)
+\delta g^{\mu\nu} $$
 
-Thie section contains some alterantive derivations, not yet complete.
+We also need to describe the matter and energy producing the curvature.  We add a matter action $S_{\text{matter}}$ and define its stress-energy tensor by:
 
-### Motion of an object in curved spacetime
+$$ \delta S_{\text{matter}}
+ = -\frac{1}{2c}\int d^4x\sqrt{-g}\,
+T_{\mu\nu}\delta g^{\mu\nu} $$
 
-Given that there is no external force/potential, and that instead we have changed the shape of spacetime, we expect that relative to this new coordinates, on object does not accelerate.
+The stress-energy tensor includes energy density, momentum density, pressure, and stress.  It plays the same role for the metric that the current $J^\mu$ played for the electromagnetic potential.
 
-$$ \frac{d^2 X^\mu}{dT^2} = 0$$
+Setting the variation of the total action to zero for every $\delta g^{\mu\nu}$ gives:
 
-Where $X^\mu$ is the spacetime position of the object, and $T = X_0$.  This says that the object itself perceived no acceleration (and hence no force) in it's own local coordinates.
+$$ R_{\mu\nu}
+ - \frac{1}{2}g_{\mu\nu}R
+ = \frac{8\pi G}{c^4}T_{\mu\nu} $$
 
-With this - we can do a few lines of algebra to get:
+The normalization is fixed by requiring the weak-field, low velocity limit to reproduce Newton's law of gravity.
 
-$$ \frac{dX^\mu}{dT} = \frac{dx^\nu}{dT}\frac{\partial X^\mu}{\partial x^\nu} $$
-$$ \frac{d^2 X^\mu}{dT^2} = \frac{d^2 x^\nu}{dT^2}\frac{\partial X^\mu}{\partial x^\nu} + \frac{dx^\nu}{dT}\frac{dx^\alpha}{dT}\frac{\partial^2 X^\mu}{\partial x^\nu\partial x^\alpha} $$
-$$ 0 = \frac{d^2 x^\nu}{dT^2}\frac{\partial X^\mu}{\partial x^\nu} + \frac{dx^\nu}{dT}\frac{dx^\alpha}{dT}\frac{\partial^2 X^\mu}{\partial x^\nu\partial x^\alpha} $$
-$$ \frac{d^2 x^\nu}{dT^2}\frac{\partial X^\mu}{\partial x^\nu} = - \frac{dx^\nu}{dT}\frac{dx^\alpha}{dT}\frac{\partial^2 X^\mu}{\partial x^\nu\partial x^\alpha} $$
-$$ \frac{d^2 x^\lambda}{dT^2} = - \frac{dx^\nu}{dT}\frac{dx^\alpha}{dT}\left[\frac{\partial^2 X^\mu}{\partial x^\nu\partial x^\alpha}\frac{\partial x^\lambda}{\partial X^\mu} \right]$$
+**We have discovered the Einstein Field Equations.**
 
-Calling the term in square brackets $\Gamma^\lambda_{\nu\alpha} = \frac{\partial^2 X^\mu}{\partial x^\nu\partial x^\alpha}\frac{\partial x^\lambda}{\partial X^\mu}$ we get:
-
-$$ \frac{d^2 x^\lambda}{dT^2} = - \Gamma^\lambda_{\nu\alpha} \frac{dx^\nu}{dT}\frac{dx^\alpha}{dT}$$
-
--->
+The left side describes the curvature of spacetime; the right side describes the matter and energy within it.  In Wheeler's famous summary: matter tells spacetime how to curve, and curved spacetime tells matter how to move.
