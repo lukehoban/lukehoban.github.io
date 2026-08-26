@@ -1,4 +1,4 @@
-Welcome 👋.  I'm __Luke Hoban__, currently CTO at [Pulumi](https://github.com/pulumi/pulumi).  Previously, co-founder of the [TypeScript](https://github.com/Microsoft/TypeScript) project, representative to the ECMA TC39 standards body working on [ECMAScript/JavaScript](https://github.com/tc39/ecma262), product manager on EC2 at [AWS](https://github.com/aws), and many other developer tools and cloud platform roles.
+Welcome 👋.  I'm __Luke Hoban__, VP of Engineering at GitHub working on Copilot Agents. Previously, CTO at [Pulumi](https://github.com/pulumi/pulumi), co-founder of the [TypeScript](https://github.com/Microsoft/TypeScript) project, representative to the ECMA TC39 standards body working on [ECMAScript/JavaScript](https://github.com/tc39/ecma262), product manager on EC2 at [AWS](https://github.com/aws), and many other developer tools and cloud platform roles.
 
 ## 📝 Blog 
 
@@ -6,6 +6,16 @@ Welcome 👋.  I'm __Luke Hoban__, currently CTO at [Pulumi](https://github.com/
 * [Untyped Lambda Calculus, Church Numerals, and the Y Combinator in Go](/posts/untyped-lambda-calculus/)
 
 ## 👨‍💻 Work 
+
+### GitHub Copilot
+
+* GitHub Copilot CLI: https://github.com/features/copilot/cli
+* GitHub Copilot App: https://github.com/features/ai/github-app
+* GitHub Copilot SDK: https://github.blog/news-insights/company-news/build-an-agent-into-any-app-with-the-github-copilot-sdk/
+* GitHub Copilot Coding Agent Launch: https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/
+* Coding Agent Launch Talk at Microsoft Build: https://youtu.be/TgwpK_ROhqo?feature=shared
+* "Project Padawan" Preview Blog: https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens
+* SWE Agents Coming to GitHub: https://www.youtube.com/watch?v=VWvV2-XwBMM 
 
 ### TypeScript
 
